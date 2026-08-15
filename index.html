@@ -130,6 +130,8 @@ body{background:#000!important}
 .blockbar{padding-left:0}
 .block-copy-btn{margin-left:auto}
 .composer{position:relative}
+.bottom-back{display:flex;justify-content:flex-start;margin-top:12px}
+.bottom-back .btn{width:100%;display:block}
 </style>
 
 
@@ -411,7 +413,7 @@ function renderDetail(){
   blocks.forEach(function(b,i){
     h+='<article class="block '+(i?'reply':'')+'" draggable="true" data-block="'+esc(b.id)+'"><span class="dot"></span><div class="blockbody">'+esc(b.text)+'</div><div class="blockbar"><span class="drag" title="ドラッグして並び替え">☰</span><button class="sub" data-bedit="'+esc(b.id)+'">編集</button><button class="sub block-copy-btn" data-bcopy="'+esc(b.id)+'">コピー</button><button class="sub danger" data-bdel="'+esc(b.id)+'">削除</button></div></article>'
   });
-  h+='<div class="composer"><textarea id="replyText" placeholder="プロンプトの続きを追加…"></textarea><div class="composerfoot"><button class="primary" id="addBlock">ブロックを追加</button></div></div></div>';
+  h+='<div class="composer"><textarea id="replyText" placeholder="プロンプトの続きを追加…"></textarea><div class="composerfoot"><button class="primary" id="addBlock">追加</button></div></div></div><div class="bottom-back"><button class="btn" id="backBottom">← 一覧</button></div>';
   var detailEl=document.getElementById('detailView');
   detailEl.innerHTML=h;
 }
@@ -583,7 +585,7 @@ document.addEventListener('click',function(e){
 document.getElementById('saveMove').onclick=function(){var t=topic(state.moveTopic);if(t){t.folderId=document.getElementById('moveFolder').value;t.updatedAt=now();save()}close('moveModal');renderList()}
 document.getElementById('detailView').addEventListener('click',function(e){
   var t=topic(state.focused);if(!t)return;
-  if(e.target.id==='back'){state.focused='';showList();return}
+  if(e.target.id==='back' || e.target.id==='backBottom'){state.focused='';showList();return}
   // プロンプト削除ボタンの処理
   if(e.target.id==='deleteTopic' || e.target.closest('#deleteTopic')){
     openDeleteModal('topic',t.id,'');
