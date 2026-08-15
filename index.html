@@ -193,16 +193,35 @@ body{background:#000!important}
 <style>
 /* Prompt composer: larger input area and text */
 .composer textarea{
-  min-height:240px !important;
+  min-height:300px !important;
   font-size:17px !important;
   line-height:1.7 !important;
   padding:15px 16px !important;
 }
 @media(max-width:760px){
   .composer textarea{
-    min-height:210px !important;
+    min-height:260px !important;
     font-size:17px !important;
   }
+}
+</style>
+
+
+<style>
+/* Re-edit modal: larger editing box */
+#editModal .box{
+  width:min(820px,96vw) !important;
+}
+#editText{
+  min-height:420px !important;
+  font-size:17px !important;
+  line-height:1.7 !important;
+  padding:15px 16px !important;
+  resize:vertical;
+}
+@media(max-width:760px){
+  #editModal .box{width:96vw !important;}
+  #editText{min-height:340px !important;}
 }
 </style>
 
