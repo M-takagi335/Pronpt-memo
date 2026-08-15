@@ -387,7 +387,7 @@ function topic(id){return data.topics.find(function(t){return t.id===id})}
 function renderDetail(){
   var t=topic(state.focused);if(!t){state.focused='';showList();return}
   var blocks=t.blocks.slice().sort(function(a,b){return a.manualOrder-b.manualOrder}),h='';
-  h+='<div class="detailhead"><button class="btn" id="back">← 一覧</button><h2>'+esc(t.title)+'</h2><button class="btn" id="renameTopic">タイトル変更</button><button class="btn danger" id="deleteTopic" type="button">プロンプトを削除</button></div>';
+  h+='<div class="detailhead"><button class="btn" id="back">← 一覧</button><h2>'+esc(t.title)+'</h2><button class="btn" id="renameTopic">タイトル変更</button></div>';
   h+='<div class="copybar"><button class="primary" id="copyAll">全体コピー</button></div>';
   h+='<div class="panel thread">';
   blocks.forEach(function(b,i){
