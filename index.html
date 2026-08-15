@@ -193,14 +193,14 @@ body{background:#000!important}
 <style>
 /* Prompt composer: larger input area and text */
 .composer textarea{
-  min-height:180px !important;
+  min-height:240px !important;
   font-size:17px !important;
   line-height:1.7 !important;
   padding:15px 16px !important;
 }
 @media(max-width:760px){
   .composer textarea{
-    min-height:160px !important;
+    min-height:210px !important;
     font-size:17px !important;
   }
 }
@@ -376,8 +376,7 @@ function renderList(){
   document.getElementById('sort').value=state.sort;
   var a=getTopics(),h='';
   a.forEach(function(t){
-    var ex=t.blocks.length?t.blocks.map(function(b){return b.text}).join(' ').slice(0,180):'まだブロックがありません';
-    h+='<article class="card" draggable="'+(state.sort==='manual')+'" data-topic="'+esc(t.id)+'"><div class="cardtop">'+(state.sort==='manual'?'<span class="drag">☰</span>':'')+'<h3>'+esc(t.title)+'</h3></div><div class="meta">📁 '+esc(folderName(t.folderId))+' ・ '+t.blocks.length+'ブロック ・ 更新 '+fmt(t.updatedAt)+'</div><div class="excerpt">'+esc(ex)+'</div><div class="cardactions"><button class="sub" data-dup="'+esc(t.id)+'">複製</button><button class="sub" data-move="'+esc(t.id)+'">フォルダ移動</button><button class="sub danger" data-trash="'+esc(t.id)+'">ゴミ箱へ</button></div></article>'
+    h+='<article class="card" draggable="'+(state.sort==='manual')+'" data-topic="'+esc(t.id)+'"><div class="cardtop">'+(state.sort==='manual'?'<span class="drag">☰</span>':'')+'<h3>'+esc(t.title)+'</h3></div><div class="meta">📁 '+esc(folderName(t.folderId))+' ・ '+t.blocks.length+'ブロック ・ 更新 '+fmt(t.updatedAt)+'</div><div class="cardactions"><button class="sub" data-dup="'+esc(t.id)+'">複製</button><button class="sub" data-move="'+esc(t.id)+'">フォルダ移動</button><button class="sub danger" data-trash="'+esc(t.id)+'">ゴミ箱へ</button></div></article>'
   });
   var cardsEl=document.getElementById('cards');
   cardsEl.innerHTML=h||'<div class="empty">'+(state.query?'該当するプロンプトがありません':'まだプロンプトがありません。')+'</div>';
